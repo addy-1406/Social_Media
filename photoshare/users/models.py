@@ -7,17 +7,17 @@ from django.conf import settings
 from autoslug import AutoSlugField
 
 class Profile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(User,on_delete=models.CASCADE)
 	image = models.ImageField(default='default.png', upload_to='profile_pics')
-	slug = AutoSlugField(populate_from='user')
+	slug = AutoSlugField(populate_from='id')
 	bio = models.CharField(max_length=255, blank=True)
 	friends = models.ManyToManyField("Profile", blank=True)
 
 	def __str__(self):
 		return str(self.user.username)
 
-	def get_absolute_url(self):
-		return "/users/{}".format(self.slug)
+	# def get_absolute_url(self):
+	# 	return "/users/{}".format(self.slug)
 
 def post_save_user_model_receiver(sender, instance, created, *args, **kwargs):
     if created:

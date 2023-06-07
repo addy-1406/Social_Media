@@ -16,8 +16,8 @@ class Profile(models.Model):
 	def __str__(self):
 		return str(self.user.username)
 
-	# def get_absolute_url(self):
-	# 	return "/users/{}".format(self.slug)
+	def get_absolute_url(self):
+		return "/users/{}".format(self.slug)
 
 def post_save_user_model_receiver(sender, instance, created, *args, **kwargs):
     if created:

@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .models import Profile, FriendRequest
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
@@ -56,7 +57,7 @@ def friend_list(request):
 
 @login_required
 def send_friend_request(request, id):
-	user = get_object_or_404(User, id=id)
+	user =get_object_or_404(User,id=id)
 	frequest, created = FriendRequest.objects.get_or_create(
 			from_user=request.user,
 			to_user=user)
@@ -64,7 +65,7 @@ def send_friend_request(request, id):
 
 @login_required
 def cancel_friend_request(request, id):
-	user = get_object_or_404(User, id=id)
+	user =get_object_or_404(User,id=id)
 	frequest = FriendRequest.objects.filter(
 			from_user=request.user,
 			to_user=user).first()
@@ -73,7 +74,7 @@ def cancel_friend_request(request, id):
 
 @login_required
 def accept_friend_request(request, id):
-	from_user = get_object_or_404(User, id=id)
+	from_user =get_object_or_404(User,id=id)
 	frequest = FriendRequest.objects.filter(from_user=from_user, to_user=request.user).first()
 	user1 = frequest.to_user
 	user2 = from_user
@@ -87,14 +88,15 @@ def accept_friend_request(request, id):
 
 @login_required
 def delete_friend_request(request, id):
-	from_user = get_object_or_404(User, id=id)
+	profile = get_object_or_404(Profile, user_id=id)
+	from_user =get_object_or_404(User,id=profile.user_id)
 	frequest = FriendRequest.objects.filter(from_user=from_user, to_user=request.user).first()
 	frequest.delete()
 	return HttpResponseRedirect('/users/{}'.format(request.user.profile.slug))
 
 def delete_friend(request, id):
 	user_profile = request.user.profile
-	friend_profile = get_object_or_404(Profile, id=id)
+	friend_profile = get_object_or_404(Profile, user_id=id)
 	user_profile.friends.remove(friend_profile)
 	friend_profile.friends.remove(user_profile)
 	return HttpResponseRedirect('/users/{}'.format(friend_profile.slug))

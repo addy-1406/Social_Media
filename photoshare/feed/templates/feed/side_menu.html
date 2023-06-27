@@ -19,10 +19,15 @@
     </div>
 </div>
 
-<div class="row">
+<!-- <div class="row"> -->
         {% if friends %}
         <div class="card card-signin my-5">
           <div class="card-body">
+            <div class="card-header" style=" background-color: gold;text-align: center; color: rgb(1, 1, 2);">
+              <h4>FRIEND LIST</h4>
+              <img src="/media/friendslist.jpg" class="rounded mr-2" width="40" height="40" alt="" />
+            </div>
+            <p></p>
             {% for user_p in friends %}
             <a href="{{ user_p.get_absolute_url }}"
               ><img
@@ -33,7 +38,7 @@
                 alt=""
             /></a>
             <a class="text-dark" href="{{ user_p.get_absolute_url }}"
-              ><b>{{ user_p }}</b></a
+              ><b>{{ user_p }}&nbsp;&nbsp;</b></a
             >
             <small
               ><a
@@ -55,7 +60,7 @@
         </h5>
         {% endif %}
     </div>
-      </div>
+      <!-- </div> -->
       
    
     

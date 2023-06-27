@@ -1,0 +1,29 @@
+    <div class="card card-signin my-5">
+      <div class="card-body">
+        <h2>Friend Requests Sent ({{ sent_friend_requests.count }})</h2>
+        <hr class="my-2" />
+        {% if not sent_friend_requests %}
+        <h5><i>No sent requests!</i></h5>
+        {% else %} {% for s_request in sent_friend_requests %}
+        <a href="{{ s_request.to_user.profile.get_absolute_url }}"
+          ><img
+            src="{{ s_request.to_user.profile.image.url }}"
+            class="rounded mr-2"
+            width="40"
+            height="40"
+            alt=""
+        /></a>
+        <a href="{{ s_request.to_user.profile.get_absolute_url }}"
+          ><b>{{ s_request.to_user.username }}</b></a
+        >
+        <small class="float-right">
+          <a
+            class="btn btn-warning mr-2"
+            href="{% url 'cancel_friend_request' s_request.to_user.id %}"
+            >Cancel</a
+          >
+        </small>
+        <br /><br />
+        {% endfor %} {% endif %}
+      </div>
+    </div>

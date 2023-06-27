@@ -1,0 +1,10 @@
+<div class="col-md-6">
+    {% block requests_sent %}
+    {% include 'users/requests_out.html' %}
+{% endblock requests_sent %}
+
+{% block requests_recieved %}
+    {% include 'users/requests_in.html' %}
+{% endblock requests_recieved %}
+</div>
+

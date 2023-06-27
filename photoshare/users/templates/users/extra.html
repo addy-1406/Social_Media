@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        {% block add_user %}
+        {% include 'users/users_comp.html' %}
+        {% endblock add_user %}
+        </div>
+        <div class="col-md-6">
+        {% block pending %}
+        {% include 'users/req_side_menu.html' %}
+        {% endblock pending %}
+        </div>
+    </div>
+</div>

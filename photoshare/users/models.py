@@ -7,9 +7,10 @@ from django.conf import settings
 from autoslug import AutoSlugField
 
 class Profile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(User,on_delete=models.CASCADE)
+	name = models.CharField(max_length=50,blank=False);
 	image = models.ImageField(default='default.png', upload_to='profile_pics')
-	slug = AutoSlugField(populate_from='user')
+	slug = AutoSlugField(populate_from='name')
 	bio = models.CharField(max_length=255, blank=True)
 	friends = models.ManyToManyField("Profile", blank=True)
 
@@ -22,7 +23,7 @@ class Profile(models.Model):
 def post_save_user_model_receiver(sender, instance, created, *args, **kwargs):
     if created:
         try:
-            Profile.objects.create(user=instance)
+            Profile.objects.create(user=instance,name=instance.username)
         except:
             pass
 
@@ -35,3 +36,6 @@ class FriendRequest(models.Model):
 
 	def __str__(self):
 		return "From {}, to {}".format(self.from_user.username, self.to_user.username)
+
+
+

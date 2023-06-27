@@ -1,0 +1,24 @@
+{%extends "feed/layout.html" %}
+{% load static %}
+{% block cssfiles %}
+{% endblock cssfiles %}
+
+{% block content %}
+ 	<div class="container">
+    <div class="row">
+    {% block post_comp %}
+    {% include 'feed/post_comp.html' %}
+    {% endblock post_comp %}
+    {% if user.is_authenticated %}
+    {% include 'feed/side_menu.html' %}
+    {% endif %}
+  </div>
+	</div>
+
+  {% include 'feed/post_pages.html' %}
+
+{% endblock content %}
+
+{% block jsfiles %}
+{% include 'feed/post_script.html' %}
+{% endblock jsfiles %}

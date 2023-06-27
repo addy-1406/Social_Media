@@ -1,0 +1,33 @@
+{% if users %}
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              {% for user_p in users %}
+                {% if not user_p.user in sent %}
+                  <a href="{{ user_p.get_absolute_url }}"
+                    ><img
+                      src="{{ user_p.image.url }}"
+                      class="rounded mr-2"
+                      width="40"
+                      height="40"
+                      alt=""
+                  /></a>
+                  <a class="text-dark" href="{{ user_p.get_absolute_url }}"
+                    ><b>{{ user_p }}</b></a
+                  >
+                  
+                  <small class="float-right">
+                    <a
+                      class="btn btn-primary mr-2"
+                      href="{% url 'send_friend_request' user_p.user_id %}"
+                      >Add Friend</a
+                    >
+                  </small>
+                
+                {% endif %}
+              <br /><br />
+              {% endfor %}
+            </div>
+          </div>
+          {% else %}
+          <h5><i>No new people to add now! Please come back later!</i></h5>
+          {% endif %}

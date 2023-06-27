@@ -1,0 +1,28 @@
+{% extends "users/layout.html" %} {% load static %} {% block cssfiles %} 
+{% endblock cssfiles %} 
+ {% block content %}
+  
+  <div class="main-content">
+    <div class="container mt-7">
+
+      {% block profile_view %}
+			{% include 'users/profile_comp.html' %}
+			{% endblock profile_view %} 
+
+      <br />
+      {% if request.user == u %}
+      <div class="row">
+      <!-- {% block requests_sent %}
+			{% include 'users/requests_out.html' %}
+			{% endblock requests_sent %}
+
+      {% block requests_recieved %}
+			{% include 'users/requests_in.html' %}
+			{% endblock requests_recieved %} -->
+        
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  {% endblock content %} {% block jsfiles %}{% endblock jsfiles %}

@@ -1,0 +1,14 @@
+{% extends "users/layout.html" %} {% load static %} {% block cssfiles %} 
+{% endblock cssfiles %} 
+ {% block content %}
+ <div class="container">
+
+  <div class="row">
+      {% include 'users/friends_comp.html' %}
+      {% block profile_card %}
+        {% include 'users/profile_card.html' %}
+
+      {% endblock profile_card %}
+    </div>
+</div>
+    {% endblock content %} {% block jsfiles %}{% endblock jsfiles %}

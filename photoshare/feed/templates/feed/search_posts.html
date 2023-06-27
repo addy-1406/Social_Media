@@ -1,0 +1,20 @@
+{% extends "feed/layout.html" %}
+{% load static %}
+{% block cssfiles %}
+{% endblock cssfiles %}
+
+{% block content %}
+ 	<div class="container">
+		{% if not posts %}
+	      	<br>
+	      	<h2><i>No posts match the tag provided!</i></h2>
+	      	{% endif %}
+			  {% block post_comp %}
+			  {% include 'feed/post_comp.html' %}
+			  {% endblock post_comp %}
+	</div>
+{% endblock content %}
+{% block jsfiles %}
+{% include 'feed/post_script.html' %}
+
+{% endblock jsfiles %}

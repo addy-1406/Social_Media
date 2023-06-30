@@ -29,7 +29,7 @@ Database: `Sqlite3`
    - Clone the repo to your local system
    ```git
    git clone https://github.com/addy-1406/Social_Media.git
-   cd Social-media-web-app
+   cd Social_Media
    ```
    Make sure you have python installed on your system.
 2. Create a Virtual Environment for the Project

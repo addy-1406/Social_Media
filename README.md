@@ -121,6 +121,13 @@ Database: `Sqlite3`
 <img width="1276" alt="Update Profile" src="https://github.com/addy-1406/Social_Media/assets/53403138/2d3dfbdb-2abb-4d45-a83f-59f2142804e8">
 <br/>
 
+# Team:
+
+This project was made by:
+* [Aditya Mandal](https://github.com/addy-1406)
+* [Tanish](https://github.com/v-tanish012)
+* [Mihit](https://github.com/mihits)
+* [Soumyadeep](https://github.com/soumyadeep-p)
 
 
 
